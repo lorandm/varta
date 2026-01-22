@@ -1,0 +1,88 @@
+(kicad_sch (version 20230121) (generator eeschema)
+
+  (uuid a1b2c3d4-e5f6-7890-abcd-ef1234567890)
+
+  (paper "A4")
+
+  (title_block
+    (title "VARTA Acoustic Drone Detector")
+    (date "2025-01-22")
+    (rev "1.0")
+    (comment 1 "Open Source Hardware")
+    (comment 2 "MIT License")
+  )
+
+  ; This is a simplified schematic representation
+  ; For full KiCad project, generate from this or use EasyEDA/KiCad GUI
+  
+  ; Component list with connections:
+  ; 
+  ; U1: ESP32-S3-WROOM-1-N16R8
+  ;     VDD -> 3.3V
+  ;     GND -> GND
+  ;     GPIO4 -> MIC1_SD
+  ;     GPIO5 -> MIC2_SD
+  ;     GPIO6 -> MIC3_SD
+  ;     GPIO7 -> MIC4_SD
+  ;     GPIO14 -> I2S_SCK (shared)
+  ;     GPIO15 -> I2S_WS (shared)
+  ;     GPIO21 -> I2C_SDA
+  ;     GPIO22 -> I2C_SCL
+  ;     GPIO48 -> LED_DATA
+  ;     GPIO38 -> BUZZER
+  ;     GPIO39 -> VIB_CTRL
+  ;     GPIO0 -> BUTTON
+  ;     GPIO1 -> VBAT_SENSE
+  ;
+  ; U2-U5: INMP441 MEMS Microphones
+  ;     VDD -> 3.3V
+  ;     GND -> GND
+  ;     SD -> GPIO4/5/6/7 respectively
+  ;     WS -> GPIO15
+  ;     SCK -> GPIO14
+  ;     L/R -> GND or VDD (alternating)
+  ;
+  ; U6: SSD1306 OLED Display
+  ;     VCC -> 3.3V
+  ;     GND -> GND
+  ;     SDA -> GPIO21
+  ;     SCL -> GPIO22
+  ;
+  ; LED1: WS2812B Ring (8 LEDs)
+  ;     VDD -> 5V
+  ;     GND -> GND
+  ;     DIN -> GPIO48
+  ;
+  ; BZ1: Piezo Buzzer
+  ;     + -> GPIO38
+  ;     - -> GND
+  ;
+  ; M1: Vibration Motor
+  ;     Via 2N2222 transistor
+  ;     Base -> GPIO39 via 1K resistor
+  ;     Collector -> Motor-
+  ;     Emitter -> GND
+  ;     Motor+ -> 5V
+  ;
+  ; SW1: Power Switch (SPST)
+  ;     Between battery and voltage regulator
+  ;
+  ; SW2: Tactile Button
+  ;     Between GPIO0 and GND (internal pullup)
+  ;
+  ; U7: TP4056 Li-Ion Charger
+  ;     BAT+/- -> Battery
+  ;     OUT+/- -> Power switch -> U8
+  ;     USB -> External USB-C
+  ;
+  ; U8: MT3608 Boost Converter
+  ;     VIN -> From power switch
+  ;     VOUT -> 5V (adjusted)
+  ;     Also provides 3.3V via LDO or ESP32 internal
+  ;
+  ; Voltage Divider (VBAT sensing):
+  ;     R1 = 10K: VBAT to sense point
+  ;     R2 = 10K: sense point to GND
+  ;     Sense point -> GPIO1
+
+)

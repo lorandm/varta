@@ -1,0 +1,23 @@
+# VARTA ML Training Requirements
+# Install with: pip install -r requirements.txt
+
+# Core ML
+tensorflow>=2.10.0,<2.16.0
+numpy>=1.21.0
+pandas>=1.3.0
+scikit-learn>=1.0.0
+
+# Audio processing
+librosa>=0.9.0
+soundfile>=0.10.0
+sounddevice>=0.4.0
+
+# Optional: for hotkey support during recording
+keyboard>=0.13.0
+
+# Visualization (optional)
+matplotlib>=3.4.0
+seaborn>=0.11.0
+
+# Development
+tqdm>=4.60.0
